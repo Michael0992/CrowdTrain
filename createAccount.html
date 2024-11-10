@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrowdTrain Registrierung</title>
+    <link rel="stylesheet" href="style.css"> <!-- Bindet die Haupt-CSS-Datei ein -->
+</head>
+<body>
+    <div class="background-blur"></div>
+    <div class="container">
+        <h1>Account erstellen</h1>
+        <form action="createAccount.php" method="post">
+            
+            <div class="input-group">
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Passwort" required>
+            </div>
+            <div class="input-group">
+                <input type="password" name="confirm_password" placeholder="Passwort wiederholen" required>
+            </div>
+            <!-- Account-Erstellen-Button mit neuer Button-Klasse -->
+            <button type="submit" class="button button-green">Account erstellen</button>
+            <br>
+            <span>oder</span>
+            <button class="button button-dark">
+                <img src="rsc/google.svg" alt="Google Icon" class="google-icon">
+                Mit Google registrieren
+            </button>
+        </form>
+    </div>
+</body>
+</html>
+
