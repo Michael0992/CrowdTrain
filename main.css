@@ -56,18 +56,20 @@ body {
         font-size: 2em;
 
     }
+    div{
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .search-section input[type="text"] {
-    width: 60%;
-    margin-left: 20%;
     padding: 10px;
     font-size: 14px;
     border: 1px solid #3a3a3a;
     border-radius: 5px;
     background-color: #242424;
-    color: #80c1ff;
-    margin-right: 10px;
+    color: #ffffff;
+    width: 60%;
 }
 
 .search-section button {
@@ -79,6 +81,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+
 
 .dataset-section {
     margin: 20px 0;
