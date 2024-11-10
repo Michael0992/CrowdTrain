@@ -15,30 +15,30 @@
         
         body {
             color: #f4f4f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
-            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
         }
         
         .dashboard-container {
             width: 100%;
             height: 100%;
             max-width: 100vw;
-            max-height: 100vh;
             background: url("rsc/Background2.png");
             border: 1px solid #3a3a3a;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            margin-top: 0;
+        }
+
+        .logo{
+         padding: 20px;   
         }
 
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0px 20px;
         }
 
         .header .balance {
@@ -88,20 +88,22 @@
         }
 
         .dataset-section h3 {
-            font-size: 16px;
+            font-size: 2em;
+            padding: 0px 30px;
             margin-bottom: 10px;
         }
 
         /* Dataset List Styling with horizontal scroll */
         .dataset-list {
+            margin: 10px;
             display: flex;
             gap: 10px;
-            background-color: #ffffff15; /* Dunkelgraue Hintergrundfarbe */
+            background-color: #ffffff15;
             padding: 10px;
-            overflow-x: auto; /* Horizontaler Scrollbalken */
+            overflow-x: auto;
             overflow-y: hidden;
             max-height: 200px;
-            min-height: 100px;
+            min-height: 120px;
             height: 30vw;
             border-radius: 5px;
             backdrop-filter: blur(20px);
@@ -109,7 +111,6 @@
             box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.297);
         }
 
-        /* Styling für den horizontalen Scrollbalken */
         .dataset-list::-webkit-scrollbar {
             height: 8px;
         }
@@ -119,19 +120,18 @@
         }
 
         .dataset-list::-webkit-scrollbar-thumb {
-            background-color: #4A90E2; /* Blaue Farbe für den Scrollbalken */
+            background-color: #4A90E2;
             border-radius: 10px;
         }
 
-        /* Dataset Button Styling */
         .dataset {
             position: relative;
-            background: none; /* Entfernt Hintergrundfarbe */
+            background: none;
             border: none;
             font-size: 14px;
             text-align: center;
             width: 200px;
-            min-width: 150px; /* Mindestbreite festlegen */
+            min-width: 150px;
             padding: 0px 10px;
             display: flex;
             flex-direction: column;
@@ -145,7 +145,6 @@
             border-radius: 5px;
         }
 
-        /* Text overlay on image */
         .dataset .text-overlay {
             position: absolute;
             top: 0;
@@ -162,31 +161,53 @@
 
         /* Participation Options */
         .participation-section {
-            text-align: center;
+   
+            max-width: 100vw;
+            margin-top: 50px;
+            background-color: black;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            
         }
 
         .participation-section h3 {
-            font-size: 16px;
-            margin-bottom: 10px;
+            font-size: 2em;
+            padding: 0px 30px;
+            white-space: nowrap;
+            ;
         }
 
         .participation-options {
+            width: 100vw;
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
             gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap
         }
 
         .participation-options button {
-            background-color: transparent;
-            border: 1px solid #3a3a3a;
+            background-color: black;
+            border: solid 1 white;
             color: #f4f4f9;
-            padding: 10px;
-            border-radius: 5px;
+            border-radius: 10px;
+            overflow: hidden;
             font-size: 14px;
-            flex: 1 1 calc(25% - 10px);
-            min-width: 120px;
             cursor: pointer;
+            width: 23vw;
+            max-width: 400px;
+            min-width: 200px;
+            margin-top: 10px;
+            div{
+                margin: 10px;
+                font-weight: bold;
+            }
+            
+
+        }
+
+        .participation-options img {
+            width: 100%;
+            height: auto;
         }
 
         .upload-section {
@@ -220,7 +241,7 @@
         <!-- Search Section -->
         <div class="search-section">
             <h3>Datensatz einkaufen:</h3>
-            <input type="text" placeholder="Beschreibe wonach du suchst">
+            <input type="text" placeholder="Beschreiben Sie wonach Sie suchen">
             <button>suchen</button>
         </div>
 
@@ -229,19 +250,17 @@
             <h3>Beteiligte Datensätze:</h3>
             <div class="dataset-list">
                 <button class="dataset">
-                    <img src="rsc/Folder.png" alt="Folder Icon">
+                    <img src="rsc/folder.png" alt="Folder Icon">
                     <div class="text-overlay">CNN-Med-1<br> Anteil: 0.03%</div>
                 </button>
                 <button class="dataset">
-                    <img src="rsc/Folder.png" alt="Folder Icon">
+                    <img src="rsc/folder.png" alt="Folder Icon">
                     <div class="text-overlay">CNN-Street<br> Anteil: 0.01%</div>
                 </button>
                 <button class="dataset">
-                    <img src="rsc/Folder.png" alt="Folder Icon">
+                    <img src="rsc/folder.png" alt="Folder Icon">
                     <div class="text-overlay">CNN-Med<br> Anteil: 0.05%</div>
                 </button>
-                
-                <!-- Weitere Datensätze hinzufügen -->
             </div>
         </div>
 
@@ -249,10 +268,26 @@
         <div class="participation-section">
             <h3>Wo möchten Sie sich beteiligen:</h3>
             <div class="participation-options">
-                <button>Bilddatensätze</button>
-                <button>Audiodatensätze</button>
-                <button>Videodatensätze</button>
-                <button>Textdatensätze</button>
+                <button>
+                    <div>Bilddatensätze</div>
+                    <img src="rsc/photo.png" alt="Bild Icon">
+                    
+                </button>
+                <button>
+                    <div>Audiodatensätze</div>
+                    <img src="rsc/sound.png" alt="Audio Icon">
+                    
+                </button>
+                <button>
+                    <div>Videodatensätze</div>
+                    <img src="rsc/video.png" alt="Video Icon">
+                    
+                </button>
+                <button>
+                    <div>Textdatensätze</div>
+                    <img src="rsc/text.png" alt="Text Icon">
+                    
+                </button>
             </div>
         </div>
 
