@@ -64,12 +64,13 @@ body {
 
 .search-section input[type="text"] {
     padding: 10px;
-    font-size: 14px;
+    font-size: 20px;
     border: 1px solid #3a3a3a;
     border-radius: 5px;
     background-color: #242424;
     color: #ffffff;
     width: 60%;
+    height: 50px;
 }
 
 .search-section button {
@@ -211,17 +212,23 @@ body {
 }
 
 .upload-section {
-    text-align: center;
     margin-top: 20px;
+
+    h3{
+        padding: 30px;   
+        font-size: 2em; 
+    }
 }
 
 .upload-section button {
     width: 60%;
     padding: 15px;
-    font-size: 14px;
+    font-size: 30px;
     background-color: #4A90E2;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 20%;
+    margin-bottom: 50px;
 }
