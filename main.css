@@ -21,6 +21,7 @@ body {
     background: url("rsc/Background2.png");
     border: 1px solid #3a3a3a;
     margin-top: 0;
+    
 }
 
 .logo{
@@ -164,7 +165,7 @@ body {
 }
 
 .participation-section h3 {
-    font-size: 1.5em;
+    font-size: 2em;
     padding: 0px 30px;
 }
 
