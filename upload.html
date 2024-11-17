@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="pageNorm.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="header">
+            <div class="logo">
+                <img src="rsc/logo.png" alt="Logo" width="100">
+            </div>
+            <div class="balance">Geschätzt: 0,00 Euro</div>
+            <div class="user-info">user@gmail.com</div>
+        </div>
+        <div class="contentNorm">
+            <form id="uploadForm">
+                
+                <label for="fileUpload">Datenmaterial</label>
+                <input type="file" id="fileUpload" accept="*"><br><br>
+
+                <label for="ImgUpload">Vorschau-Bild:</label>
+                <input type="file" id="ImgUpload" accept="image/*"><br><br>
+                <div id="imgPreviewContainer"></div>
+                <br><br>
+
+                <label for="tagInput">Tags:</label>
+                <input type="text" id="tagInput">
+                <button class="btnTag">+</button>
+                <br>
+                <br>
+                <div id="tags"></div>
+                <input type="text" style="display: none;" id="hiddenTags">
+                <br>
+                <br>
+                <label for="description">Beschreibung:</label><br>
+                <textarea id="description" rows="4" cols="50" placeholder="Beschreibung hier eingeben"></textarea><br><br>
+            
+                <label>Kategorie wählen:</label><br>
+                
+                <label for="category_image">
+                    <input type="radio" id="category_image" name="category" value="image" checked>
+                    Bilddaten
+                </label>
+                <label for="category_video">
+                    <input type="radio" id="category_video" name="category" value="video">
+                    Videodaten
+                </label>
+                <label for="category_text">
+                    <input type="radio" id="category_text" name="category" value="text">
+                    Textdaten
+                </label>
+                <label for="category_music">
+                    <input type="radio" id="category_music" name="category" value="music">
+                    Audiodaten
+                </label>
+                
+            
+                <label>
+                    <input type="checkbox" id="agreement">
+                    Ich erkläre mich mit den folgenden Bedingungen einverstanden:
+                    <ul>
+                        <li>Ich besitze alle Rechte an den hochgeladenen Daten und habe die Zustimmung aller Beteiligten, falls die Daten andere Personen betreffen.</li>
+                        <li>Die hochgeladenen Daten enthalten keine urheberrechtlich geschützten Inhalte, es sei denn, ich bin der rechtmäßige Rechteinhaber.</li>
+                        <li>Die hochgeladenen Daten verstoßen nicht gegen geltendes Recht, einschließlich, aber nicht beschränkt auf Datenschutzgesetze, Persönlichkeitsrechte und Rechte am eigenen Bild.</li>
+                        <li>Die hochgeladenen Daten enthalten keine illegalen, beleidigenden, diffamierenden, diskriminierenden oder anderweitig rechtswidrigen Inhalte.</li>
+                        <li>Ich lade keine Daten hoch, die Malware, Viren oder sonstige schädliche Software enthalten.</li>
+                        <li>Ich bin mir bewusst, dass ich mit dem Hochladen der Daten meine Rechte an den Betreiber übertrage, einschließlich, aber nicht beschränkt auf die Nutzung, Verarbeitung und Verbreitung der Daten.</li>
+                        <li>Ich stelle den Betreiber von jeglichen Ansprüchen Dritter frei, die sich aus einem Verstoß gegen die oben genannten Bedingungen ergeben könnten.</li>
+                    </ul>
+                </label>
+                <p class="error" id="error">Sie müssen der Einverständniserklärung zustimmen, um fortzufahren.</p>
+                <br><br>
+            
+                <button class="submit" type="submit">Hochladen</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const imgUpload = document.getElementById("ImgUpload");
+        const imgPreviewContainer = document.getElementById("imgPreviewContainer");
+        const tagInput = document.getElementById("tagInput");
+        const addButton = document.querySelector(".btnTag");
+        const tagsContainer = document.getElementById("tags");
+        const hiddenTags = document.getElementById("hiddenTags");
+        const uploadForm = document.getElementById("uploadForm");
+
+        // Vorschau eines Bildes anzeigen
+        imgUpload.addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            if (file && file.type.startsWith("image/")) {
+                const imgPreview = document.createElement("img");
+                imgPreview.src = URL.createObjectURL(file);
+                imgPreview.style.maxWidth = "150px";
+                imgPreview.style.maxHeight = "150px";
+                imgPreview.style.marginTop = "10px";
+                imgPreview.style.border = "1px solid #000";
+
+                // Alte Vorschau entfernen, falls vorhanden
+                imgPreviewContainer.innerHTML = ""; // Leert den Container
+                imgPreviewContainer.appendChild(imgPreview);
+            }
+        });
+
+        // Tags hinzufügen
+        addButton.addEventListener("click", function (event) {
+            event.preventDefault(); // Verhindert das Neuladen der Seite
+            const tagText = tagInput.value.trim();
+
+            if (tagText !== "") {
+                const tagSpan = document.createElement("span");
+                tagSpan.textContent = tagText;
+                tagSpan.className = "tag";
+                tagSpan.style.marginRight = "10px";
+                tagSpan.style.padding = "5px";
+                tagSpan.style.backgroundColor = "#ccc";
+                tagSpan.style.borderRadius = "5px";
+                tagSpan.style.cursor = "pointer";
+
+                // Tag entfernen, wenn darauf geklickt wird
+                tagSpan.addEventListener("click", function () {
+                    tagsContainer.removeChild(tagSpan);
+                    updateHiddenTags();
+                });
+
+                tagsContainer.appendChild(tagSpan);
+                tagInput.value = ""; // Leert das Eingabefeld
+                updateHiddenTags();
+            }
+        });
+
+        // Aktualisiert das versteckte Feld mit allen Tags
+        function updateHiddenTags() {
+            const tagElements = tagsContainer.querySelectorAll(".tag");
+            const tagValues = Array.from(tagElements).map(tag => tag.textContent);
+            hiddenTags.value = tagValues.join(",");
+        }
+
+        // Upload verhindern, wenn Bedingungen nicht akzeptiert wurden
+        uploadForm.addEventListener("submit", function (event) {
+            const agreement = document.getElementById("agreement");
+            const error = document.getElementById("error");
+
+            if (!agreement.checked) {
+                event.preventDefault();
+                error.style.display = "block";
+            } else {
+                error.style.display = "none";
+            }
+        });
+    });
+
+</script>

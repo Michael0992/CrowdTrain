@@ -1,0 +1,76 @@
+.contentNorm {
+    background: linear-gradient(-135deg, rgb(94, 7, 58) 0%, rgb(84, 40, 88) 35%, rgb(22, 17, 53) 100%);
+    width: 100vw;
+    overflow: hidden; /* Verhindert unnötige Scrollleisten */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Zentriert den Inhalt vertikal und horizontal */
+}
+
+form {
+    margin-top: 200px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 700px;
+    width: 90%; /* Sorgt dafür, dass das Formular auf kleinen Bildschirmen passt */
+    padding: 15px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Für einen ansprechenderen Look */
+    color: black;
+    
+}
+
+ul {
+    background-color: lightblue;
+    width: 100%;
+    position: relative;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+
+
+label {
+    position: relative;
+    width: 100%;
+    padding: 15px;
+    cursor: pointer; /* Zeigt an, dass das Label klickbar ist */
+}
+
+button {
+    flex-wrap: wrap;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color:rgb(0, 136, 255);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: rgb(132, 0, 255);
+}
+
+.error{
+    color: red;
+    display: none;
+    width: 100%;
+}
+
+#tagInput {
+    height: 40px;
+    
+}
+
+.btnTag{
+    height: 40px;
+    margin-top: 0;
+    border-radius: 0px 10px 10px 0px;
+}
+
+#fileUpload  {
+
+}
